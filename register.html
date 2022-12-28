@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Register Form</title>
+	<link rel="stylesheet" type="text/css" href="register.css">
+	<script type="text/javascript" src="js.js"></script>
+</head>
+<body>
+	<div class="box">
+		<form autocomplete="off">
+			<h2>Sign-Up</h2>
+			<div class="inputbox">
+				<input type="text" name="name" required="required">
+				<span>Name</span>
+				<i></i>
+			</div>
+			<div class="inputbox">
+				<input type="text" name="uname" required="required">
+				<span>E-mail</span>
+				<i></i>
+			</div>
+			<div class="inputbox">
+				<input type="password" name="pwd" required="required" id="pass">
+				<span>Password</span>
+				<span id="show" onclick="return show_pass()">(o</span>
+				<i></i>
+			</div>
+			<div class="strengthmeter"></div>
+			<div class="inputbox">
+				<input type="password" name="rpwd" required="required" id="rpass">
+				<span>Retype-Password</span>
+				<span id="show" onclick="return show_rpass()">(o</span>
+				<i></i>
+			</div>
+			<div class="strengthmeter"></div>
+			<div class="down">
+			<input type="submit" name="register" value="Register">
+				<a href="loginpage.html">Existing user?, Login!</a>
+			</div>
+		</form>
+	</div>
+</body>
+</html>
