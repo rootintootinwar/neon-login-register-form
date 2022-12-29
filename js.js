@@ -1,4 +1,5 @@
 var state = false;
+var statee = false;
 function show_pass(){
 	if(state){
 		document.getElementById("pass").setAttribute("type","password");
@@ -8,9 +9,6 @@ function show_pass(){
 		document.getElementById("pass").setAttribute("type","text");
 		state = true;
 	}
-}
-var statee = false;
-function show_rpass(){
 	if(statee){
 		document.getElementById("rpass").setAttribute("type","password");
 		statee = false;
@@ -20,3 +18,4 @@ function show_rpass(){
 		statee = true;
 	}
 }
+
