@@ -6,8 +6,9 @@
 	<script type="text/javascript" src="js.js"></script>
 </head>
 <body>
+	
 	<div class="box">
-		<form autocomplete="off">
+		<form class="inbox" autocomplete="off">
 			<h2>Sign-Up</h2>
 			<div class="inputbox">
 				<input type="text" name="name" required="required">
@@ -20,24 +21,45 @@
 				<i></i>
 			</div>
 			<div class="inputbox">
-				<input type="password" name="pwd" required="required" id="pass">
+				<input type="password" name="pwd" required="required" id="pass" placeholder="Must Contain Atleast one A-Z a-z 0-9">
 				<span>Password</span>
 				<span id="show" onclick="return show_pass()">(o</span>
 				<i></i>
+				<div class="strengthmeter"></div>
 			</div>
-			<div class="strengthmeter"></div>
 			<div class="inputbox">
 				<input type="password" name="rpwd" required="required" id="rpass">
 				<span>Retype-Password</span>
 				<span id="show" onclick="return show_pass()">(o</span>
 				<i></i>
 			</div>
-			<div class="strengthmeter"></div>
 			<div class="down">
 			<input type="submit" name="register" value="Register">
 				<a href="loginpage.html">Existing user?, Login!</a>
 			</div>
 		</form>
 	</div>
+	<script>
+		let inbox = document.querySelector('.inbox');
+		document.addEventListener("keyup",function(e){
+			let password = document.querySelector('#pass').value;
+			let strength = pass_strength(password);
+			if(strength <= 2){
+				inbox.classList.add('weak');
+				inbox.classList.remove('medium');
+				inbox.classList.remove('strong');
+			}
+			else if(strength >= 2 && strength <= 4){
+				inbox.classList.remove('weak');
+				inbox.classList.add('medium');
+				inbox.classList.remove('strong');
+			}
+			else{
+				inbox.classList.remove('weak');
+				inbox.classList.remove('medium');
+				inbox.classList.add('strong');
+			}
+		})
+	</script>
 </body>
 </html>

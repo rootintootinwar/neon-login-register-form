@@ -29,7 +29,7 @@ body{
 	width: 380px;
 	height: 600px;
 	transform-origin: bottom right;
-	background: linear-gradient(0deg,transparent,#ff85ea,#ff85ea);
+	background: linear-gradient(0deg,transparent,#ffff00,#ffff00);
 	animation: animate 6s linear infinite;
 }
 .box::after{
@@ -41,7 +41,7 @@ body{
 	width: 380px;
 	height: 600px;
 	transform-origin: bottom right;
-	background: linear-gradient(0deg,transparent,#ff85ea,#ff85ea);
+	background: linear-gradient(0deg,transparent,#ffff00,#ffff00);
 	animation: animate 6s linear infinite;
 	animation-delay: -3s;
 }
@@ -68,7 +68,7 @@ form{
 	overflow: hidden;
 }
 h2{
-	color: #ff85ea;
+	color: #ffff00;
 	font-weight: 500;
 	text-align: center;
 	letter-spacing: 0.1em;
@@ -76,7 +76,12 @@ h2{
 .inputbox{
 	position: relative;
 	width: 300px;
-	margin-top: 35px;
+	margin-top: 38px;
+}
+::placeholder{
+	color: #28292d;
+	font-size: 0.85em;
+
 }
 .inputbox input{
 	position: relative;
@@ -100,10 +105,11 @@ h2{
 	color: #8f8f8f;
 	letter-spacing: 0.05em;
 	transition: 0.5s;
+	z-index: 11;
 }
 .inputbox input:valid ~ span,
 .inputbox input:focus ~ span{
-	color: #ff85ea;
+	color: #ffff00;
 	transform: translateY(-34px);
 	font-size: 0.80em;
 }
@@ -117,7 +123,8 @@ h2{
 }
 #show:hover{
 	color: white;
-	transition: -0.5s;
+	transition: -1s;
+	transition-delay: 0.1s;
 	text-shadow:  0 0 5px white,
 					0 0 25px white,
 					0 0 50px white;
@@ -128,7 +135,7 @@ h2{
 	bottom: 0;
 	width: 100%;
 	height: 2px;
-	background: #ff85ea;
+	background: #ffff00;
 	border-radius: 4px;
 	overflow: hidden;
 	transition: 0.5s;
@@ -138,6 +145,72 @@ h2{
 .inputbox input:valid ~ i,
 .inputbox input:focus ~ i{
 	height: 44px;
+}
+.inbox .strengthmeter{
+	position: absolute;
+	bottom: 0;
+	left: 1%;
+	width: 98%;
+	height: 3px;
+	background: #28292d;
+	top: 3.3em;
+}
+.inbox .strengthmeter::before{
+	content: '';
+	position: absolute;
+	width:0%;
+	height:100%;
+	transition: 0.5s;
+}
+.inbox.weak .strengthmeter::before{
+	width: 10%;
+	background: red;
+	filter: drop-shadow(0 0 0.5px red)
+			drop-shadow(0 0 1.5px red)
+			drop-shadow(0 0 3px red);
+}
+.inbox.medium .strengthmeter::before{
+	width: 66.66%;
+	background: orange;
+	filter: drop-shadow(0 0 0.5px orange)
+			drop-shadow(0 0 1.5px orange)
+			drop-shadow(0 0 3px orange);
+}
+.inbox.strong .strengthmeter::before{
+	width: 100%;
+	background: lime;
+	filter: drop-shadow(0 0 0.5px lime)
+			drop-shadow(0 0 1.5px lime)
+			drop-shadow(0 0 3px lime);
+}
+.inbox .strengthmeter::after{
+	position: absolute;
+	top: 3px;
+	font-size: 0.80em;
+}
+.inbox.weak .strengthmeter::after{
+	content: 'Your Password is weak';
+	left: 13.8em;
+	color: white;
+	text-shadow: 0 0 5px red,
+				0 0 10px red,
+				0 0 15px red;
+}
+.inbox.medium .strengthmeter::after{
+	content: 'Becomes Medium';
+	left: 15.6em;
+	color: white;
+	text-shadow: 0 0 5px orange,
+				0 0 10px orange,
+				0 0 15px orange;
+}
+.inbox.strong .strengthmeter::after{
+	content: 'Strong as Steel';
+	left: 16.9em;
+	color: white;
+	text-shadow: 0 0 5px lime,
+				0 0 10px lime,
+				0 0 15px lime;
 }
 .down{
 	display: flex;
@@ -164,17 +237,17 @@ input[type="submit"]{
 	border: none;
 	outline: none;
 	padding: 11px 25px;
-	background: #ff85ea;
+	background: #ffff00;
 	cursor: pointer;
 	border-radius: 4px;
 	font-weight: 600;
 	width:120px;
 }
 input[type="submit"]:hover{
-	background-color: #ff85ea;
+	background-color: #ffff00;
 	color: #fff;
 	border-radius: 6px;
-	box-shadow: 0 0 5px #ff85ea,
-				0 0 25px #ff85ea,
-				0 0 50px #ff85ea;
+	box-shadow: 0 0 5px #ffff00,
+				0 0 25px #ffff00,
+				0 0 50px #ffff00;
 }
