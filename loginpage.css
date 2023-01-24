@@ -1,3 +1,18 @@
+#alert
+{
+	
+    height: 3em;
+    width: 20em;
+    border: 3px solid #1c1c1c;
+    background: #ee05503b;
+    padding: 0 15px;
+    font-size: 19px;
+    line-height: 40px;
+    margin: 10px 0;
+    color: white;
+    border-radius: 12px;
+    overflow: hidden;
+}
 *{
 	margin: 0;
 	padding: 0;
@@ -73,10 +88,25 @@ h2{
 	text-align: center;
 	letter-spacing: 0.1em;
 }
+.errorbox{
+	position: absolute;
+	color: white;
+	font-size: 0.80em;
+	bottom: 3.8em;
+	right: 0em;
+	letter-spacing: 0.05em;
+	filter: drop-shadow(0 0 0.5px red)
+			drop-shadow(0 0 1.5px red)
+			drop-shadow(0 0 3px red);
+}
 .inputbox{
 	position: relative;
 	width: 300px;
 	margin-top: 35px;
+}
+::placeholder{
+	color: #28292d;
+	font-size: 1em;
 }
 .inputbox input{
 	position: relative;
@@ -116,6 +146,7 @@ h2{
 	color: #8f8f8f;
 	letter-spacing: 0.05em;
 	transition: 0.5s;
+	z-index: 11;
 }
 .inputbox input:valid ~ span,
 .inputbox input:focus ~ span{
@@ -174,8 +205,9 @@ input[type="submit"]{
 	cursor: pointer;
 	border-radius: 4px;
 	font-weight: 600;
-	width:100px;
-	margin-top: 10px;
+	width:110px;
+	margin-top: 1.5em;
+	margin-left: 7em;
 }
 input[type="submit"]:hover{
 	background-color: #01FF99;

@@ -3,7 +3,6 @@
 	margin: 0;
 	padding: 0;
 }
-
 section{
 	position:relative;
 	width: 100%;
@@ -30,8 +29,8 @@ i{
 }
 i:hover{
 	transition: 0s;
-	color: #01FF99;
-	text-shadow: 0 0 120px #01FF99;
+	color: #00ffff;
+	text-shadow: 0 0 120px #00ffff;
 }
 section .row div{
 	animation: animate1 80s linear infinite;
@@ -101,4 +100,96 @@ section .row:nth-child(even) div:nth-child(2){
 /*Login Panel*/
 a{
 	text-decoration:none;
+}
+.box{
+	position: absolute;
+	width: 420px;
+	height: 250px;
+	background: #1c1c1c;
+	border-radius:8px;
+	overflow: hidden;
+	z-index: 10;
+	top: 13em;
+	right: 36em;
+}
+.box::before{
+	content:'';
+	z-index: 1;
+	position: absolute;
+	top: -50%;
+	left: -50%;
+	width: 420px;
+	height: 250px;
+	transform-origin: bottom right;
+	background: linear-gradient(0deg,transparent,#fa5f55,#fa5f55);
+	animation: animate 6s linear infinite;
+}
+.box::after{
+	content:'';
+	z-index: 1;
+	position: absolute;
+	top: -50%;
+	left: -50%;
+	width: 420px;
+	height: 250px;
+	transform-origin: bottom right;
+	background: linear-gradient(0deg,transparent,#fa5f55,#fa5f55);
+	animation: animate 6s linear infinite;
+	animation-delay: -3s;
+}
+@keyframes animate
+{
+	0%
+	{
+		transform: rotate(0deg);
+	}
+	100%
+	{
+		transform: rotate(360deg);
+	}
+}
+form{
+	position: absolute;
+	inset: 2px;
+	background: #28292d;
+	padding: 50px 40px;
+	border-radius: 8px;
+	z-index: 2;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+}
+h2{
+	color: #fa5f55;
+	font-weight: 500;
+	font-family: calibri;
+	text-align: center;
+	letter-spacing: 0.1em;
+	text-shadow: 0 0 10px #fa5f55,
+				0 0 15px #fa5f55,
+				0 0 20px #fa5f55;
+}
+.down{
+	position: absolute;
+	top: 9em;
+	right: 9.5em;
+}
+input[type="button"]{
+	border: none;
+	outline: none;
+	padding: 11px 25px;
+	background: #fa5f55;
+	cursor: pointer;
+	border-radius: 4px;
+	font-weight: 600;
+	width:120px;
+	z-index: 10;
+}
+input[type="button"]:hover{
+	background-color: red;
+	color: #fff;
+	border-radius: 6px;
+	box-shadow: 0 0 5px red,
+				0 0 25px red,
+				0 0 50px red;
 }

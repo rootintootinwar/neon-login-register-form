@@ -1,3 +1,18 @@
+#alert
+{
+	
+    height: 3em;
+    width: 20em;
+    border: 3px solid #1c1c1c;
+    background: #ee05503b;
+    padding: 0 15px;
+    font-size: 19px;
+    line-height: 40px;
+    margin: 10px 0;
+    color: white;
+    border-radius: 12px;
+    overflow: hidden;
+}
 *{
 	margin: 0;
 	padding: 0;
@@ -15,7 +30,7 @@ body{
 .box{
 	position: relative;
 	width: 380px;
-	height: 600px;
+	height: 670px;
 	background: #1c1c1c;
 	border-radius:12px;
 	overflow: hidden;
@@ -27,7 +42,7 @@ body{
 	top: -50%;
 	left: -50%;
 	width: 380px;
-	height: 600px;
+	height: 670px;
 	transform-origin: bottom right;
 	background: linear-gradient(0deg,transparent,#ffff00,#ffff00);
 	animation: animate 6s linear infinite;
@@ -39,7 +54,7 @@ body{
 	top: -50%;
 	left: -50%;
 	width: 380px;
-	height: 600px;
+	height: 670px;
 	transform-origin: bottom right;
 	background: linear-gradient(0deg,transparent,#ffff00,#ffff00);
 	animation: animate 6s linear infinite;
@@ -73,14 +88,28 @@ h2{
 	text-align: center;
 	letter-spacing: 0.1em;
 }
+
+.errorbox{
+	position: absolute;
+	bottom: 3.7em;
+	right: 0em;
+	color: white;
+	font-size: 0.80em;
+	text-align: right;
+	letter-spacing: 0.05em;
+	filter: drop-shadow(0 0 0.5px red)
+			drop-shadow(0 0 1.5px red)
+			drop-shadow(0 0 3px red);
+}
 .inputbox{
 	position: relative;
+	padding-top: 17px;
 	width: 300px;
-	margin-top: 38px;
+	margin-top: 10px;
 }
 ::placeholder{
 	color: #28292d;
-	font-size: 0.85em;
+	font-size: 1em;
 
 }
 .inputbox input{
@@ -148,12 +177,14 @@ h2{
 }
 .inbox .strengthmeter{
 	position: absolute;
+	
 	bottom: 0;
 	left: 1%;
 	width: 98%;
-	height: 3px;
+	height: 2.5px;
 	background: #28292d;
-	top: 3.3em;
+	top: 4.3em;
+
 }
 .inbox .strengthmeter::before{
 	content: '';
@@ -183,40 +214,192 @@ h2{
 			drop-shadow(0 0 1.5px lime)
 			drop-shadow(0 0 3px lime);
 }
-.inbox .strengthmeter::after{
+#pwd{
+	padding-top: 15px;
+}
+
+.inbox .errorbox3::after{
 	position: absolute;
-	top: 3px;
+	color: white;
 	font-size: 0.80em;
+	margin-top: 0.9em;
+	letter-spacing: 0.05em;
 }
-.inbox.weak .strengthmeter::after{
+.inbox.weak .errorbox3::after{
 	content: 'Your Password is weak';
-	left: 13.8em;
+	left: 16.2em;
 	color: white;
-	text-shadow: 0 0 5px red,
-				0 0 10px red,
-				0 0 15px red;
+	filter: drop-shadow(0 0 0.5px red)
+			drop-shadow(0 0 1.5px red)
+			drop-shadow(0 0 3px red);
 }
-.inbox.medium .strengthmeter::after{
+.inbox.medium .errorbox3::after{
 	content: 'Becomes Medium';
-	left: 15.6em;
+	left: 18.4em;
 	color: white;
-	text-shadow: 0 0 5px orange,
-				0 0 10px orange,
-				0 0 15px orange;
+	filter: drop-shadow(0 0 0.5px orange)
+			drop-shadow(0 0 1.5px orange)
+			drop-shadow(0 0 3px orange);
 }
-.inbox.strong .strengthmeter::after{
+.inbox.strong .errorbox3::after{
 	content: 'Strong as Steel';
-	left: 16.9em;
+	left: 19.6em;
 	color: white;
-	text-shadow: 0 0 5px lime,
-				0 0 10px lime,
-				0 0 15px lime;
+	filter: drop-shadow(0 0 0.5px lime)
+			drop-shadow(0 0 1.5px lime)
+			drop-shadow(0 0 3px lime);
 }
+.errorbox5{
+	position: absolute;
+	color: white;
+	right: 3em;
+	font-size: 0.80em;
+	letter-spacing: 0.05em;
+	filter: drop-shadow(0 0 0.5px red)
+			drop-shadow(0 0 1.5px red)
+			drop-shadow(0 0 3px red);
+}
+.rbutton{
+	color: #8f8f8f;
+	font-weight: 500;
+	font-size: 1em;
+	letter-spacing: 0.05em;
+	margin-top: 21px;
+}
+input[type="radio"]{
+	display:none;
+}
+label{
+	cursor: pointer;
+}
+label span{
+	display: inline-flex;
+	margin-left:16px;
+	margin-top: 10px;
+	align-items: center;
+	padding: 5px 15px;
+	border: 0.5px solid #ffff00;
+	border-radius: 50px;
+	transition: .25s ease;
+}
+label span:hover{
+	background-color: #ffff00;
+	color: white;
+	box-shadow: 0 0 5px #ffff00,
+				0 0 10px #ffff00,
+				0 0 15px #ffff00;
+	transition: 0.2s ease;
+}
+input[type="radio"]:checked+span{
+	background-color: #ffff00;
+	font-weight: 600;
+	color: black;
+}
+
+.select-box {
+  margin-top: 21px;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  font-size: 1em;
+  font-weight: 500;
+}
+
+
+.select-box .options-container {
+  background: #2f3640;
+  color: #8f8f8f;
+  max-height: 0;
+  width: 100%;
+  opacity: 0;
+  transition: all 0.4s;
+  border-radius: 8px;
+
+  order: 1;
+  overflow: hidden;
+}
+
+.selected {
+  background: #2f3640;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  color: #8f8f8f;
+  position: relative;
+
+  order: 0;
+}
+.selected::after {
+  content: "";
+  background: url("img/arrow-down.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  position: absolute;
+  height: 100%;
+  width: 32px;
+  right: 10px;
+  top: 5px;
+
+  transition: all 0.4s;
+}
+
+.select-box .options-container.active {
+  max-height: 130px;
+  opacity: 1;
+  overflow-y: scroll;
+  z-index: 6;
+}
+
+.select-box .options-container.active + .selected::after {
+  transform: rotateX(180deg);
+  top: -6px;
+}
+
+.select-box .options-container::-webkit-scrollbar {
+  width: 8px;
+  background: #0d141f;
+  border-radius: 0 8px 8px 0;
+}
+
+.select-box .options-container::-webkit-scrollbar-thumb {
+  background: #525861;
+  border-radius: 0 8px 8px 0;
+
+}
+.select-box .options-container::-webkit-scrollbar-thumb:hover {
+  background: #ffff00;
+  border-radius: 0 8px 8px 0;
+}
+
+.select-box .option,
+.selected {
+  padding: 12px 24px;
+  cursor: pointer;
+}
+
+.select-box .option:hover {
+  background: #414b57;
+  color: yellow;
+  text-shadow: 0 0 5px #ffff00,
+				0 0 10px #ffff00,
+				0 0 15px #ffff00;
+
+}
+
+.select-box label {
+  padding: 0.64em;
+  padding-right: 14em;
+  cursor: pointer;
+}
+
+
 .down{
+	position: absolute;
+	margin-top: 30em;
+	padding :30px 87px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	min-height: 25vh;
 	flex-direction: column;
 }
 a{

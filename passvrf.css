@@ -1,3 +1,4 @@
+
 *{
 	margin: 0;
 	padding: 0;
@@ -12,10 +13,25 @@ body{
 	flex-direction: column;
 	background: #23242a;
 }
+#alert
+{
+	
+    height: 3em;
+    width: 20em;
+    border: 3px solid #1c1c1c;
+    background: #ee05503b;
+    padding: 0 15px;
+    font-size: 19px;
+    line-height: 40px;
+    margin: 10px 0;
+    color: white;
+    border-radius: 12px;
+    overflow: hidden;
+}
 .box{
 	position: relative;
 	width: 380px;
-	height: 420px;
+	height: 320px;
 	background: #1c1c1c;
 	border-radius:8px;
 	overflow: hidden;
@@ -27,7 +43,7 @@ body{
 	top: -50%;
 	left: -50%;
 	width: 380px;
-	height: 420px;
+	height: 320px;
 	transform-origin: bottom right;
 	background: linear-gradient(0deg,transparent,#ff10f0,#ff10f0);
 	animation: animate 6s linear infinite;
@@ -39,7 +55,7 @@ body{
 	top: -50%;
 	left: -50%;
 	width: 380px;
-	height: 420px;
+	height: 320px;
 	transform-origin: bottom right;
 	background: linear-gradient(0deg,transparent,#ff10f0,#ff10f0);
 	animation: animate 6s linear infinite;
@@ -72,6 +88,17 @@ h2{
 	font-weight: 500;
 	text-align: center;
 	letter-spacing: 0.1em;
+}
+.errorbox{
+	position: absolute;
+	color: white;
+	font-size: 0.80em;
+	bottom: 3.8em;
+	right: 0em;
+	letter-spacing: 0.05em;
+	filter: drop-shadow(0 0 0.5px red)
+			drop-shadow(0 0 1.5px red)
+			drop-shadow(0 0 3px red);
 }
 .inputbox{
 	position: relative;
@@ -142,6 +169,83 @@ h2{
 .inputbox input:focus ~ i{
 	height: 44px;
 }
+.inbox .strengthmeter{
+	position: absolute;
+	bottom: 0;
+	left: 1%;
+	width: 98%;
+	height: 3px;
+	background: #28292d;
+	top: 3.3em;
+}
+.inbox .strengthmeter::before{
+	content: '';
+	position: absolute;
+	width:0%;
+	height:100%;
+	transition: 0.5s;
+}
+.inbox.weak .strengthmeter::before{
+	width: 10%;
+	background: red;
+	filter: drop-shadow(0 0 0.5px red)
+			drop-shadow(0 0 1.5px red)
+			drop-shadow(0 0 3px red);
+}
+.inbox.medium .strengthmeter::before{
+	width: 66.66%;
+	background: orange;
+	filter: drop-shadow(0 0 0.5px orange)
+			drop-shadow(0 0 1.5px orange)
+			drop-shadow(0 0 3px orange);
+}
+.inbox.strong .strengthmeter::before{
+	width: 100%;
+	background: lime;
+	filter: drop-shadow(0 0 0.5px lime)
+			drop-shadow(0 0 1.5px lime)
+			drop-shadow(0 0 3px lime);
+}
+.inbox .erorbox3::after{
+	position: absolute;
+	color: white;
+	font-size: 0.80em;
+	margin-top: 1.7em;
+	letter-spacing: 0.05em;
+}
+.inbox.weak .erorbox3::after{
+	content: 'Your Password is weak';
+	left: 16.1em;
+	color: white;
+	filter: drop-shadow(0 0 0.5px red)
+			drop-shadow(0 0 1.5px red)
+			drop-shadow(0 0 3px red);
+}
+.inbox.medium .erorbox3::after{
+	content: 'Becomes Medium';
+	left: 18.3em;
+	color: white;
+	filter: drop-shadow(0 0 0.5px orange)
+			drop-shadow(0 0 1.5px orange)
+			drop-shadow(0 0 3px orange);
+}
+.inbox.strong .erorbox3::after{
+	content: 'Strong as Steel';
+	left: 19.5em;
+	color: white;
+	filter: drop-shadow(0 0 0.5px lime)
+			drop-shadow(0 0 1.5px lime)
+			drop-shadow(0 0 3px lime);
+}
+.down{
+	position: absolute;
+	top: 11.5em;
+	padding :30px 87px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
 .links{
 	display: flex;
 	justify-content: space-between;
@@ -154,14 +258,14 @@ h2{
 }
 ::placeholder{
 	color: #28292d;
-	font-size: 0.85em;
+	font-size: 1em;
 }
 .links a:nth-child(1):hover
 {
 	color: white;
-	text-shadow: 0 0 5px orange,
-				0 0 10px orange,
-				0 0 15px orange;
+	text-shadow: 0 0 5px #ffff00,
+				0 0 10px #ffff00,
+				0 0 15px #ffff00;
 }
 .links a:nth-child(2):hover
 {
@@ -179,9 +283,7 @@ input[type="submit"]{
 	cursor: pointer;
 	border-radius: 4px;
 	font-weight: 600;
-	width:150px;
-	margin-top: 2em;
-	margin-left: 5.8em;
+	width:120px;
 }
 input[type="submit"]:hover{
 	background-color: #ff10f0;
