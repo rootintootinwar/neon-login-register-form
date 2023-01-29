@@ -4,7 +4,7 @@
 <head>
 	<title>Pin Verification</title>
 	<link rel="stylesheet" type="text/css" href="passvrf.css">
-	<script type="text/javascript" src="register.js"></script>
+	<script type="text/javascript" src="passvrf.js"></script>
 </head>
 <body>
 	 		
@@ -19,10 +19,11 @@
             }
             ?>
 	<div class="box">
-		<form action="verifyemail.php" method="POST" autocomplete="off">
+		<form action="verifyemail.php" name="oppform" method="POST" autocomplete="off" onsubmit="return opfun()">
 			<h2>Verify-Pin</h2>   
 			<div class="inputbox">
-				<input type="password" name="OTPverify" required="required" id="pass" placeholder="Verification code" >
+				<div class="errorbox" id="errorbox2"></div>
+				<input type="password" name="OTPverify" required="required" id="pass" placeholder="Enter the Pin from E-Mail" >
 				<span>Enter the Pin</span>
 				<span id="show" onclick="return show_pass()">(o</span>
 				<i></i>

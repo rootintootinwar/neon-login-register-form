@@ -1,6 +1,14 @@
 <?php
     include_once("connection.php");
 
+    use PHPMailer\PHPMailer\PHPMailer;
+	use PHPMailer\PHPMailer\SMTP;
+	use PHPMailer\PHPMailer\Exception;
+
+	require 'PHPMailer\src\Exception.php';
+	require 'PHPMailer\src\PHPMailer.php';
+	require 'PHPMailer\src\SMTP.php';
+
 // Connection Created Successfully
 
     session_start();
@@ -10,6 +18,8 @@
 
     // When Sign Up Button Clicked
     if (isset($_POST['register'])) {
+    
+
         $name = mysqli_real_escape_string($conn, $_POST['name']);
         $email = mysqli_real_escape_string($conn, $_POST['uname']);
         $pwd = md5($_POST['pwd']);
@@ -38,19 +48,32 @@
 
             // Send Varification Code In Gmail
             if ($insertInfo) {
-                // Configure Your Server To Send Mail From Local Host
-                $subject = 'Email Verification Code';
-                $message = "our verification code is $code";
-                $sender = 'From: rootintootinwar@gmail.com';
 
-                if (mail($email, $subject, $message, $sender)) {
-                    $message = "We've sent a verification code to your Email <br> $email";
+				$mail = new PHPMailer(true);
+				$mail->SMTPDebug=3;
+				try {
+				    
+				    $mail->isSMTP();
+				    $mail->Host       = 'smtp.gmail.com';                     
+				    $mail->SMTPAuth   = true;                                   
+				    $mail->Username   = 'rootintootinwar@gmail.com';                     
+				    $mail->Password   = 'cwelkittaaoplyqk';                               
+				    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;           
+				    $mail->Port       = 465;
 
-                    $_SESSION['message'] = $message;
+				    $mail->setFrom('from@example.com', 'Mailer');
+				    $mail->addAddress($email);     
+				    
+				    $mail->isHTML(true);                                 
+				    $mail->Subject = 'Verify E-Mail';
+				    $mail->Body    = 'Hi! ' . $name . ' , your verification pin is \' ' . $code . ' \'';
+				    
+				    $mail->send();
                     header('location: otp.php');
-                } else {
-                    $errors['otp_errors'] = 'Failed while sending code!';
-                }
+				} catch (Exception $e) {
+				     echo "Failed while sending code!: {$mail->ErrorInfo}"; 
+				}
+
             } else {
                 $errors['db_errors'] = "Failed while inserting data into database!";
             }
@@ -86,6 +109,7 @@
     }
     //login button clicked
 	if (isset($_POST['login'])) {
+
 	        $email = mysqli_real_escape_string($conn, $_POST['email']);
 	        $pwd = md5($_POST['pwd']);
 
@@ -104,8 +128,6 @@
 	                if ($status === 'Verified') {
 	                    header('location: index.html');
 	                } else {
-	                    $info = "It's look like you haven't still verify your email $email";
-	                    $_SESSION['message'] = $info;
 	                    header('location: otp.php');
 	                }
 	            } else {
@@ -118,6 +140,7 @@
 
         // if forgot button will clicked
     if (isset($_POST['forgot_password'])) {
+
         $email = $_POST['uname'];
         $_SESSION['uname'] = $email;
 
@@ -132,18 +155,32 @@
                 $updateQuery = "UPDATE register SET code = $code WHERE email = '$email'";
                 $updateResult = mysqli_query($conn, $updateQuery);
                 if ($updateResult) {
-                    $subject = 'Email Verification Code';
-                    $message = "our verification code is $code";
-                    $sender = 'From: rootintootinwar@gmail.com';
 
-                    if (mail($email, $subject, $message, $sender)) {
-                        $message = "We've sent a verification code to your Email <br> $email";
+	                $mail = new PHPMailer(true);
+					$mail->SMTPDebug=3;
+					try {
+					    
+					    $mail->isSMTP();
+					    $mail->Host       = 'smtp.gmail.com';                     
+					    $mail->SMTPAuth   = true;                                   
+					    $mail->Username   = 'rootintootinwar@gmail.com';                     
+					    $mail->Password   = 'cwelkittaaoplyqk';                               
+					    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;           
+					    $mail->Port       = 465;
 
-                        $_SESSION['message'] = $message;
-                        header('location: verifyemail.php');
-                    } else {
-                        $errors['otp_errors'] = 'Failed while sending code!';
-                    }
+					    $mail->setFrom('from@example.com', 'Mailer');
+					    $mail->addAddress($email);     
+					    
+					    $mail->isHTML(true);                                 
+					    $mail->Subject = 'Forgot Password';
+					    $mail->Body    = 'Hi! , your verification pin is \' ' . $code . ' \'';
+					    
+					    $mail->send();
+	                    header('location: verifyemail.php');
+					} catch (Exception $e) {
+					     echo "Failed while sending code!: {$mail->ErrorInfo}"; 
+					}
+
                 } else {
                     $errors['db_errors'] = "Failed while inserting data into database!";
                 }
@@ -154,6 +191,7 @@
             $errors['db_error'] = "Failed while checking email from database!";
         }
     }
+
     if(isset($_POST['verifyemail'])){
         $_SESSION['message'] = "";
         $OTPverify = mysqli_real_escape_string($conn, $_POST['OTPverify']);
